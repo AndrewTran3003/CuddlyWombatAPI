@@ -1,15 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CuddlyWombat.Models;
+using CuddlyWombatAPI.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using CuddlyWombatAPI.Data;
+using CuddlyWombatAPI.Services;
+using AutoMapper;
+using CuddlyWombatAPI.Infrastructure;
 
 namespace CuddlyWombatAPI
 {
@@ -25,7 +27,37 @@ namespace CuddlyWombatAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services
+                .Configure<ItemEntity>(
+                    Configuration.GetSection("Info")
+                );
+            services
+                .AddScoped<IItemService, DefaultItemService>();
+            services.AddAutoMapper(typeof(Startup));
+            //Use in-memory database for quick development and testing
+            //TODO: swap it out for a real database in production
+            services.AddDbContext<CuddlyWombatDbContext>(
+                options => options.UseInMemoryDatabase("CuddlyWombatInMemoryDb"));
+            services
+                .AddControllers();
+            services
+                .AddMvcCore(options =>
+               {
+                   options.Filters.Add<JsonExceptionFilter>();
+               })
+                .AddCors();
+
+            services
+                .AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.ApiVersionReader
+                = new MediaTypeApiVersionReader();
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.ReportApiVersions = true;
+                options.ApiVersionSelector
+                = new CurrentImplementationApiVersionSelector(options);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +66,7 @@ namespace CuddlyWombatAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
 
             app.UseHttpsRedirection();
@@ -46,6 +79,11 @@ namespace CuddlyWombatAPI
             {
                 endpoints.MapControllers();
             });
+            if (env.IsDevelopment())
+            {
+                app.UseOpenApi();
+                app.UseSwaggerUi3();
+            }
         }
     }
 }
