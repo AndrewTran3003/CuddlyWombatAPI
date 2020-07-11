@@ -17,7 +17,6 @@ C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyW
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.pdb
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.genruntimeconfig.cache
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
-C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\Microsoft.DotNet.InternalAbstractions.dll
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\Namotion.Reflection.dll
@@ -50,6 +49,9 @@ C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\System.
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.csproj.CoreCompileInputs.cache
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.MvcApplicationPartsAssemblyInfo.cache

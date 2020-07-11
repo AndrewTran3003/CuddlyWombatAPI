@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CuddlyWombat.Models;
 using CuddlyWombatAPI.Data;
 using CuddlyWombatAPI.Models.Resources;
+using CuddlyWombatAPI.Models.ResponseModels;
 using CuddlyWombatAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,10 +26,17 @@ namespace CuddlyWombatAPI.Controllers
         [HttpGet(Name = nameof(Index))]
         [ProducesResponseType(200)]
         // GET: ItemsController
-        public ActionResult<Item> Index()
+        public async Task<ActionResult<List<Item>>> Index()
         {
+            var allItems = new ItemsResponseModel();
+            allItems.Items =  await _itemService.GetAllItems();
 
-            return null; 
+            if(allItems.Items == null)
+            {
+                return NotFound();
+            }
+            return allItems.Items;
+
         }
 
         // GET: Items/Get/5

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CuddlyWombatAPI.Models;
+using CuddlyWombatAPI.Models.ResponseModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,14 +17,10 @@ namespace CuddlyWombatAPI.Controllers
         [HttpGet (Name = nameof(GetRoot))]
         public IActionResult GetRoot()
         {
-            var response = new
+            var response = new RootResponseModel
             {
-                message = "Welcome to Cuddly Wombat API version 1",
-                href = Url.Link(nameof(GetRoot), null),
-                items = new
-                {
-                    href = Url.Link(nameof(ItemsController.Index),null)
-                }
+                Self = Link.To(nameof(GetRoot)),
+                Items = Link.To(nameof(ItemsController.Index))
             };
 
             return Ok(response);

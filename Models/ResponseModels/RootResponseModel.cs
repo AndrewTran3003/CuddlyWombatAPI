@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CuddlyWombatAPI.Services
+namespace CuddlyWombatAPI.Models.ResponseModels
 {
-    public interface IItemService
+    public class RootResponseModel:Resource
     {
-        Task<Item> GetItemAsync(Guid id);
-
-        Task<List<Item>> GetAllItems();
+        public Link Items { get; set; }
     }
 }

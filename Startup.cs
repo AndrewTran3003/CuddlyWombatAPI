@@ -12,6 +12,7 @@ using CuddlyWombatAPI.Data;
 using CuddlyWombatAPI.Services;
 using AutoMapper;
 using CuddlyWombatAPI.Infrastructure;
+using Newtonsoft;
 
 namespace CuddlyWombatAPI
 {
@@ -33,17 +34,21 @@ namespace CuddlyWombatAPI
                 );
             services
                 .AddScoped<IItemService, DefaultItemService>();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(
+                options => options.AddProfile<MappingProfile>());
             //Use in-memory database for quick development and testing
             //TODO: swap it out for a real database in production
             services.AddDbContext<CuddlyWombatDbContext>(
                 options => options.UseInMemoryDatabase("CuddlyWombatInMemoryDb"));
             services
-                .AddControllers();
+                .AddControllers().AddNewtonsoftJson();
+            
+               
             services
                 .AddMvcCore(options =>
                {
                    options.Filters.Add<JsonExceptionFilter>();
+                   options.Filters.Add<LinkRewritingFilter>();
                })
                 .AddCors();
 
