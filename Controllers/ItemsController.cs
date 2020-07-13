@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CuddlyWombat.Models;
 using CuddlyWombatAPI.Data;
+using CuddlyWombatAPI.Models;
 using CuddlyWombatAPI.Models.Resources;
 using CuddlyWombatAPI.Models.ResponseModels;
 using CuddlyWombatAPI.Services;
@@ -26,16 +27,20 @@ namespace CuddlyWombatAPI.Controllers
         [HttpGet(Name = nameof(Index))]
         [ProducesResponseType(200)]
         // GET: ItemsController
-        public async Task<ActionResult<List<Item>>> Index()
+        public async Task<ActionResult<ItemsResponseModel>> Index()
         {
-            var allItems = new ItemsResponseModel();
-            allItems.Items =  await _itemService.GetAllItems();
+            var items = await _itemService.GetAllItemsAsync();
+            var allItems = new ItemsResponseModel() {
+                Self = Link.To(nameof(Index)),
+                Items = items
+            };
+         
 
             if(allItems.Items == null)
             {
                 return NotFound();
             }
-            return allItems.Items;
+            return allItems;
 
         }
 

@@ -10,6 +10,6 @@ namespace CuddlyWombatAPI.Services
     {
         Task<Item> GetItemAsync(Guid id);
 
-        Task<List<Item>> GetAllItems();
+        Task<List<Item>> GetAllItemsAsync();
     }
 }

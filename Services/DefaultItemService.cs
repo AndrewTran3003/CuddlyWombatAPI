@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using CuddlyWombat.Models;
 using CuddlyWombatAPI.Controllers;
 using CuddlyWombatAPI.Data;
@@ -17,16 +18,22 @@ namespace CuddlyWombatAPI.Services
     public class DefaultItemService: IItemService
     {
         private readonly CuddlyWombatDbContext _context;
+        private readonly IConfigurationProvider _configurationProvider;
         private readonly IMapper _mapper;
-        public DefaultItemService(CuddlyWombatDbContext context,IMapper mapper)
+        public DefaultItemService(
+            CuddlyWombatDbContext context,
+
+            IConfigurationProvider configurationProvider)
         {
             _context = context;
-            _mapper = mapper;
+            _configurationProvider = configurationProvider;
+            _mapper = configurationProvider.CreateMapper();
         }
 
-        public async Task<List<Item>> GetAllItems()
+        public async Task<List<Item>> GetAllItemsAsync()
         {
             var itemsEntity = await _context.Items.ToListAsync();
+           
             if (itemsEntity == null)
             {
                 return null;
@@ -35,7 +42,7 @@ namespace CuddlyWombatAPI.Services
             List<Item> items = new List<Item>();
             foreach (var itemEntity in itemsEntity)
             {
-                Item item = _mapper.Map<Item>(itemEntity);
+                var item = _mapper.Map<Item>(itemEntity);
                 items.Add(item);
             }
 
@@ -50,8 +57,8 @@ namespace CuddlyWombatAPI.Services
             {
                 return null;
             }
-
-            return _mapper.Map<Item>(entity);
+            var result = _mapper.Map<Item>(entity);
+            return result;
         }
     }
 }

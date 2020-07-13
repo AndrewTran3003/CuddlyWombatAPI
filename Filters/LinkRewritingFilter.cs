@@ -1,10 +1,12 @@
-﻿using CuddlyWombatAPI.Infrastructure;
+﻿using AutoMapper.Internal;
+using CuddlyWombatAPI.Infrastructure;
 using CuddlyWombatAPI.Models;
 using CuddlyWombatAPI.Models.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Routing;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -16,7 +18,7 @@ namespace CuddlyWombatAPI.Filters
     {
         private readonly IUrlHelperFactory _urlHelperFactory;
 
-        public LinkRewritingFilter (IUrlHelperFactory urlHelperFactory)
+        public LinkRewritingFilter(IUrlHelperFactory urlHelperFactory)
         {
             _urlHelperFactory = urlHelperFactory;
         }
@@ -47,7 +49,7 @@ namespace CuddlyWombatAPI.Filters
                 .GetType().GetTypeInfo()
                 .GetProperties()
                 .Where(p => p.CanRead)
-                .ToArray();
+                .ToList();
             var linkProperties = allProperties
                 .Where(p => p.CanWrite && p.PropertyType == typeof(Link));
             foreach (var linkProperty in linkProperties)
@@ -58,15 +60,25 @@ namespace CuddlyWombatAPI.Filters
                     continue;
                 }
                 linkProperty.SetValue(model, rewritten);
+                //Speciall handling for the hidden Self property
+                if (linkProperty.Name == nameof(Resource.Self))
+                {
+                    allProperties.SingleOrDefault(p => p.Name == nameof(Resource.Href))
+                        ?.SetValue(model, rewritten.Href);
+                    allProperties.SingleOrDefault(p => p.Name == nameof(Resource.Method))
+                        ?.SetValue(model, rewritten.Method);
+                    allProperties.SingleOrDefault(p => p.Name == nameof(Resource.Relations))
+                        ?.SetValue(model, rewritten.Relations);
+                }
 
             }
 
-            var arrayProperties = allProperties.Where(p => p.PropertyType.IsArray);
-            RewriteLinksInArrays(arrayProperties, model, rewriter);
+            var listProperties = allProperties.Where(p => p.PropertyType.IsListType());
+            RewriteLinksInLists(listProperties, model, rewriter);
 
             var objectProperties = allProperties
                 .Except(linkProperties)
-                .Except(arrayProperties);
+                .Except(listProperties);
             RewriteLinksInNestedObjects(objectProperties, model, rewriter);
         }
 
@@ -75,7 +87,7 @@ namespace CuddlyWombatAPI.Filters
             object model,
             LinkRewriter rewriter)
         {
-            foreach(var objectProperty in objectProperties)
+            foreach (var objectProperty in objectProperties)
             {
                 if (objectProperty.PropertyType == typeof(string))
                 {
@@ -90,15 +102,15 @@ namespace CuddlyWombatAPI.Filters
             }
         }
 
-        private static void RewriteLinksInArrays(
-            IEnumerable<PropertyInfo> arrayProperties,
+        private static void RewriteLinksInLists(
+            IEnumerable<PropertyInfo> listProperties,
             object model,
             LinkRewriter rewriter)
         {
-            foreach(var arrayProperty in arrayProperties)
+            foreach (var listProperty in listProperties)
             {
-                var array = arrayProperty.GetValue(model) as Array ?? new Array[0];
-                foreach (var element in array)
+                var list = listProperty.GetValue(model) as IList ?? new IList[0];
+                foreach (var element in list)
                 {
                     RewriteAllLinks(element, rewriter);
                 }
@@ -108,9 +120,22 @@ namespace CuddlyWombatAPI.Filters
         public Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
             var asObjectResult = context.Result as ObjectResult;
-            bool shouldSkip = asObjectResult?.StatusCode >= 400
+            /*bool shouldSkip = asObjectResult?.StatusCode >= 400
                 || asObjectResult?.Value == null
-                || asObjectResult?.Value as Resource == null;
+                || asObjectResult?.Value as Resource == null;*/
+            bool shouldSkip = false;
+            if (asObjectResult.StatusCode >= 400)
+            {
+                shouldSkip = true;
+            }
+            if(asObjectResult.Value == null)
+            {
+                shouldSkip = true;
+            }
+            if (asObjectResult.Value as Resource == null)
+            {
+                shouldSkip = true;
+            }
 
             Resource test = asObjectResult.Value as Resource;
 

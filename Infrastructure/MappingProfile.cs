@@ -16,8 +16,7 @@ namespace CuddlyWombatAPI.Infrastructure
         {
             CreateMap<ItemEntity, Item>()
                 .ForMember(dest => dest.Self, opt => opt.MapFrom(src => 
-                Link.To(
-                    nameof(ItemsController.Get),new { itemId = src.ID } )));
+                Link.To(nameof(ItemsController.Get),new { itemId = src.ID } )));
         }
     }
 }
