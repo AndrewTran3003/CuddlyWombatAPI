@@ -33,7 +33,8 @@ namespace CuddlyWombatAPI
                     Configuration.GetSection("Info")
                 );
             services
-                .AddScoped<IItemService, DefaultItemService>();
+                .AddScoped<IItemService, DefaultItemService>()
+                .AddScoped<IMenuService,DefaultMenuService>();
             services.AddAutoMapper(
                 options => options.AddProfile<MappingProfile>());
             //Use in-memory database for quick development and testing

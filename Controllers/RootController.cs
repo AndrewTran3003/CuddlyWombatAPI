@@ -20,7 +20,8 @@ namespace CuddlyWombatAPI.Controllers
             var response = new RootResponseModel
             {
                 Self = Link.To(nameof(GetRoot)),
-                Items = Link.To(nameof(ItemsController.Index))
+                Items = Link.To(nameof(ItemsController.GetAllItems)),
+                Menus = Link.To(nameof(MenusController.GetAllMenus)),
             };
 
             return Ok(response);

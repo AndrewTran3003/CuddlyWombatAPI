@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace CuddlyWombatAPI.Models.ResponseModels
 {
-    public class RootResponseModel:Resource
+    public class MenusResponseModel:Resource
     {
-        public Link Items { get; set; }
-        public Link Menus { get; set; }
+        public List<Menu> Menus { get; set; }
     }
 }

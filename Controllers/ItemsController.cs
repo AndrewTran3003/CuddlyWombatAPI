@@ -24,14 +24,14 @@ namespace CuddlyWombatAPI.Controllers
         {
             _itemService = itemService;
         }
-        [HttpGet(Name = nameof(Index))]
+        [HttpGet(Name = nameof(GetAllItems))]
         [ProducesResponseType(200)]
         // GET: ItemsController
-        public async Task<ActionResult<ItemsResponseModel>> Index()
+        public async Task<ActionResult<ItemsResponseModel>> GetAllItems()
         {
             var items = await _itemService.GetAllItemsAsync();
             var allItems = new ItemsResponseModel() {
-                Self = Link.To(nameof(Index)),
+                Self = Link.To(nameof(GetAllItems)),
                 Items = items
             };
          
@@ -45,10 +45,10 @@ namespace CuddlyWombatAPI.Controllers
         }
 
         // GET: Items/Get/5
-        [HttpGet("{itemId}", Name = nameof(Get))]
+        [HttpGet("{itemId}", Name = nameof(GetItem))]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<Item>> Get(Guid itemId)
+        public async Task<ActionResult<Item>> GetItem(Guid itemId)
         {
             var item = await _itemService.GetItemAsync(itemId);
             if (item == null)

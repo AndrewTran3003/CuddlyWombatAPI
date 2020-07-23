@@ -15,5 +15,7 @@ namespace CuddlyWombatAPI.Data
 
         }
         public DbSet<ItemEntity> Items { get; set; }
+        public DbSet<MenuEntity> Menus { get; set; }
+        public DbSet<ItemJMenu> ItemMenus { get; set; }
     }
 }

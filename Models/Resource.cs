@@ -10,5 +10,7 @@ namespace CuddlyWombatAPI.Models.Resources
     {
         [JsonIgnore]
         public Link Self { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
