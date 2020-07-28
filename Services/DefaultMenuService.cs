@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CuddlyWombat.Models;
+using CuddlyWombatAPI.Controllers;
 using CuddlyWombatAPI.Data;
 using CuddlyWombatAPI.Models;
 using CuddlyWombatAPI.Models.Resources;
@@ -30,7 +31,7 @@ namespace CuddlyWombatAPI.Services
                 .ToListAsync();
             foreach(MenuEntity menuEntity in menuList)
             {
-                var menu = _mapper.Map<Menu>(menuEntity);
+                var menu = MapMenuToEntity(menuEntity);
                 response.Add(menu);
             }
             return response;
@@ -42,18 +43,21 @@ namespace CuddlyWombatAPI.Services
                 .Include(i => i.ItemMenus)
                 .ThenInclude(i => i.Item)
                 .FirstOrDefaultAsync();
+            var menu = MapMenuToEntity(menuEntity);
+            return menu;
+        }
+
+
+        private Menu MapMenuToEntity(MenuEntity menuEntity)
+        {
             var menu = _mapper.Map<Menu>(menuEntity);
-            /*menu.ItemList = new List<Resource>();
+            menu.ItemList = new List<Resource>();
             foreach (ItemJMenu itemMenu in menuEntity.ItemMenus)
             {
-                var itemToAdd = new Resource
-                {
-                    Name = itemMenu.Item.Name,
-                    Description = itemMenu.Item.Description
-                };
-                menu.ItemList.Add(itemToAdd);
-                
-            }*/
+                var item = _mapper.Map<Resource>(itemMenu.Item);
+                item.Self = Link.To(nameof(ItemsController.GetItem), new { itemId = itemMenu.ItemID });
+                menu.ItemList.Add(item);
+            }
             return menu;
         }
     }
