@@ -12,5 +12,6 @@ namespace CuddlyWombat.Models
 
         public ItemEntity Item { get; set; }
         public MenuEntity Menu { get; set; }
+        public int Quantity { get; set; }
     }
 }

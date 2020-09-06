@@ -19,6 +19,7 @@ namespace CuddlyWombat.Models
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool Available { get; set; }
 
     }
 }

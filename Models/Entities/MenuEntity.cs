@@ -9,7 +9,8 @@ namespace CuddlyWombat.Models
     public class MenuEntity:Entity
     {
         public string Type { get; set; }
-        public int Quantity { get; set; }
+        public int? AvailableQuantity { get; set; }
+        public int QuantitySold { get; set; }
         public double Price { get; set; }
         public ICollection<ItemJMenu> ItemMenus { get; set; }
         public ICollection<OrderJMenu> OrderMenus { get; set; }

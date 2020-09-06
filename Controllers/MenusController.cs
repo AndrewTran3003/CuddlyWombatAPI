@@ -1,5 +1,6 @@
 ﻿using CuddlyWombatAPI.Models;
 using CuddlyWombatAPI.Models.Resources;
+using CuddlyWombatAPI.Models.Resources.Menu;
 using CuddlyWombatAPI.Models.ResponseModels;
 using CuddlyWombatAPI.Services;
 using Microsoft.AspNetCore.Mvc;

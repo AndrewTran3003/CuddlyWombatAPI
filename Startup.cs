@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using CuddlyWombatAPI.Data;
 using CuddlyWombatAPI.Services;
 using AutoMapper;
@@ -37,10 +38,8 @@ namespace CuddlyWombatAPI
                 .AddScoped<IMenuService,DefaultMenuService>();
             services.AddAutoMapper(
                 options => options.AddProfile<MappingProfile>());
-            //Use in-memory database for quick development and testing
-            //TODO: swap it out for a real database in production
             services.AddDbContext<CuddlyWombatDbContext>(
-                options => options.UseInMemoryDatabase("CuddlyWombatInMemoryDb"));
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services
                 .AddControllers().AddNewtonsoftJson();
             
