@@ -38,5 +38,8 @@ namespace CuddlyWombatAPI.Models
         
         [JsonIgnore]
         public object RouteValue { get; set; }
+
+        [JsonIgnore]
+        public Link Self { get; set; }
     }
 }

@@ -57,7 +57,7 @@ namespace CuddlyWombatAPI.Services
             {
                 var item = _mapper.Map<ItemSubResource>(itemMenu.Item);
                 item.Self = Link.To(nameof(ItemsController.GetItem), new { itemId = itemMenu.ItemID });
-                item.Quantity = itemMenu.Quantity;
+                item.Qty = itemMenu.Qty;
                 menu.ItemList.Add(item);
             }
             return menu;

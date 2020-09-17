@@ -10,6 +10,6 @@ namespace CuddlyWombat.Models
         public Guid PaymentID { get; set; }
         public Guid OrderID { get; set; }
         public Payment Payment { get; set; }
-        public Order Order { get; set; }
+        public OrderEntity Order { get; set; }
     }
 }

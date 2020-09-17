@@ -7,7 +7,6 @@ C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\CuddlyW
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\CuddlyWombatAPI.runtimeconfig.dev.json
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\CuddlyWombatAPI.dll
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\CuddlyWombatAPI.pdb
-C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.csprojAssemblyReference.cache
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.AssemblyInfoInputs.cache
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.AssemblyInfo.cs
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.RazorTargetAssemblyInfo.cache
@@ -96,3 +95,4 @@ C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\bin\Debug\netcoreapp3.1\runtime
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.csproj.CoreCompileInputs.cache
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Side Projects\CuddlyWombatAPI\CuddlyWombatAPI\obj\Debug\netcoreapp3.1\CuddlyWombatAPI.csprojAssemblyReference.cache

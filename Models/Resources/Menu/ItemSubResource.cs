@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace CuddlyWombatAPI.Models.Resources.Menu
 {
-    public class ItemSubResource:Resource
+    public class ItemSubResource:SubResource
     {
-        public int Quantity { get; set; }
+        public string Description { get; set; }
+        public int Qty { get; set; }
     }
 }

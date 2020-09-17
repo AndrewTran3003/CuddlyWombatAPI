@@ -17,85 +17,89 @@ namespace CuddlyWombatAPI.Test
         }
         public static async Task AddTestData(CuddlyWombatDbContext context)
         {
+
             if (context.Items.Any())
             {
                 return;
             }
-            
+
+
+
+            // Item List
             var items = new ItemEntity[]
             {
                 new ItemEntity {
-                    ID = Guid.Parse("5a514ce0-33e7-4069-9823-d1c6cea1fda3"), 
-                    Name = "Cappucino", 
-                    Description = "Classic Cappucino with one sugar", 
-                    AvailableQuantity = null, 
-                    QuantitySold = 100, 
-                    Type = "Drink", 
-                    Price = 3.75, 
-                    DateCreated = DateTime.UtcNow, 
-                    Available = true 
+                    ID = Guid.Parse("5a514ce0-33e7-4069-9823-d1c6cea1fda3"),
+                    Name = "Cappucino",
+                    Description = "Classic Cappucino with one sugar",
+                    AvailableQuantity = null,
+                    QuantitySold = 100,
+                    Type = "Drink",
+                    Price = 3.75,
+                    DateCreated = DateTime.UtcNow,
+                    Available = true
                 },
                 new ItemEntity {
-                    ID = Guid.Parse("58b6cfc8-23ba-4a7c-a641-5ba37bf72bed"), 
-                    Name = "Latte", 
-                    Description = "Classic Latte with one sugar", 
-                    AvailableQuantity = null, 
-                    QuantitySold = 120, 
-                    Type = "Drink", 
-                    Price = 3.65, 
-                    DateCreated = DateTime.UtcNow, 
-                    Available = true 
+                    ID = Guid.Parse("58b6cfc8-23ba-4a7c-a641-5ba37bf72bed"),
+                    Name = "Latte",
+                    Description = "Classic Latte with one sugar",
+                    AvailableQuantity = null,
+                    QuantitySold = 120,
+                    Type = "Drink",
+                    Price = 3.65,
+                    DateCreated = DateTime.UtcNow,
+                    Available = true
                 },
                 new ItemEntity {
-                    ID = Guid.Parse("065de0e4-e587-48c2-a0e3-66b4981243ab"), 
-                    Name = "Grilled Chicken", 
-                    Description = "Regular grilled chicken set of 3", 
-                    AvailableQuantity = null, 
-                    QuantitySold = 150, 
-                    Type = "Food", 
-                    Price = 5, 
-                    DateCreated = DateTime.UtcNow, 
-                    Available = true 
+                    ID = Guid.Parse("065de0e4-e587-48c2-a0e3-66b4981243ab"),
+                    Name = "Grilled Chicken",
+                    Description = "Regular grilled chicken set of 3",
+                    AvailableQuantity = null,
+                    QuantitySold = 150,
+                    Type = "Food",
+                    Price = 5,
+                    DateCreated = DateTime.UtcNow,
+                    Available = true
                 },
                 new ItemEntity {
-                    ID = Guid.Parse("ba9684ed-3d89-4cbd-9380-ea47fb290ee1"), 
-                    Name = "Small Chips", 
-                    Description = "A small bag of chips", 
-                    AvailableQuantity = null, 
-                    QuantitySold = 131, 
-                    Type = "Food", 
-                    Price = 3, 
-                    DateCreated = DateTime.UtcNow 
+                    ID = Guid.Parse("ba9684ed-3d89-4cbd-9380-ea47fb290ee1"),
+                    Name = "Small Chips",
+                    Description = "A small bag of chips",
+                    AvailableQuantity = null,
+                    QuantitySold = 131,
+                    Type = "Food",
+                    Price = 3,
+                    DateCreated = DateTime.UtcNow
                 },
                 new ItemEntity {
-                    ID = Guid.Parse("18dbcd8b-64ea-43a7-b0aa-b4cd8f5e3cca"), 
-                    Name = "Muffin", 
-                    Description = "Classic blueberry muffin", 
-                    AvailableQuantity = null, 
-                    QuantitySold = 140, 
-                    Type = "Food", 
-                    Price = 4, 
-                    DateCreated = DateTime.UtcNow 
+                    ID = Guid.Parse("18dbcd8b-64ea-43a7-b0aa-b4cd8f5e3cca"),
+                    Name = "Muffin",
+                    Description = "Classic blueberry muffin",
+                    AvailableQuantity = null,
+                    QuantitySold = 140,
+                    Type = "Food",
+                    Price = 4,
+                    DateCreated = DateTime.UtcNow
                 },
                 new ItemEntity {
-                    ID = Guid.Parse("eaf64e3d-4f44-4df3-a2a3-bf2441fbd791"), 
-                    Name = "Flat White", 
-                    Description = "Classic Flat White with one sugar", 
-                    AvailableQuantity = null, 
-                    QuantitySold = 100, 
-                    Type = "Drink", 
-                    Price = 3.75, 
-                    DateCreated = DateTime.UtcNow 
+                    ID = Guid.Parse("eaf64e3d-4f44-4df3-a2a3-bf2441fbd791"),
+                    Name = "Flat White",
+                    Description = "Classic Flat White with one sugar",
+                    AvailableQuantity = null,
+                    QuantitySold = 100,
+                    Type = "Drink",
+                    Price = 3.75,
+                    DateCreated = DateTime.UtcNow
                 },
                 new ItemEntity {
-                    ID = Guid.Parse("d1b55b79-176d-4aef-9c13-87f54579fcbb"), 
-                    Name = "Signature Vanilla Syrup", 
-                    Description = "Made in New Zealand from local and imported ingredients", 
-                    AvailableQuantity = 100, 
-                    QuantitySold = 3, 
-                    Type = "Merchandise", 
-                    Price = 15, 
-                    DateCreated = DateTime.UtcNow 
+                    ID = Guid.Parse("d1b55b79-176d-4aef-9c13-87f54579fcbb"),
+                    Name = "Signature Vanilla Syrup",
+                    Description = "Made in New Zealand from local and imported ingredients",
+                    AvailableQuantity = 100,
+                    QuantitySold = 3,
+                    Type = "Merchandise",
+                    Price = 15,
+                    DateCreated = DateTime.UtcNow
                 },
                 new ItemEntity {
                     ID = Guid.Parse("fb8c11f5-5c12-4ee9-bbc9-aa22c39511f2"),
@@ -152,33 +156,36 @@ namespace CuddlyWombatAPI.Test
             {
                 context.Items.Add(item);
             }
+
+
+            // Menu List
             var menus = new MenuEntity[]
            {
                 new MenuEntity {
-                    ID = Guid.Parse("8beae932-c9a5-4d2b-8f25-eb41d32e5729"), 
-                    Name = "Morning Set", 
-                    Description = "Something to kickstart your morning", 
-                    Price = 6, 
-                    DateCreated = DateTime.UtcNow, 
-                    AvailableQuantity = null, 
-                    QuantitySold = 20 
+                    ID = Guid.Parse("8beae932-c9a5-4d2b-8f25-eb41d32e5729"),
+                    Name = "Morning Set",
+                    Description = "Something to kickstart your morning",
+                    Price = 6,
+                    DateCreated = DateTime.UtcNow,
+                    AvailableQuantity = null,
+                    QuantitySold = 20
                 },
                 new MenuEntity {
-                    ID = Guid.Parse("7ff490d9-0edd-42da-a492-e75e077702ad"), 
-                    Name = "Lunch Set", 
-                    Description = "Treat your tummy better for a productive afternoon", 
-                    Price = 10, 
-                    DateCreated = DateTime.UtcNow, 
-                    AvailableQuantity = null, 
-                    QuantitySold = 30 
+                    ID = Guid.Parse("7ff490d9-0edd-42da-a492-e75e077702ad"),
+                    Name = "Lunch Set",
+                    Description = "Treat your tummy better for a productive afternoon",
+                    Price = 10,
+                    DateCreated = DateTime.UtcNow,
+                    AvailableQuantity = null,
+                    QuantitySold = 30
                 },
                 new MenuEntity {
-                    ID = Guid.Parse("5c7ac899-ce69-42ea-b403-a724f6a07d03"), 
-                    Name = "Dinner Set", 
-                    Description = "Let's have dinner, shall we?", 
-                    Price = 10, 
-                    DateCreated = DateTime.UtcNow,  
-                    AvailableQuantity = null, 
+                    ID = Guid.Parse("5c7ac899-ce69-42ea-b403-a724f6a07d03"),
+                    Name = "Dinner Set",
+                    Description = "Let's have dinner, shall we?",
+                    Price = 10,
+                    DateCreated = DateTime.UtcNow,
+                    AvailableQuantity = null,
                     QuantitySold = 30
                 }
            };
@@ -189,7 +196,7 @@ namespace CuddlyWombatAPI.Test
             }
 
 
-            //ItemMenu connection
+            //Item and Menu connection
 
             var itemMenu = new ItemJMenu[]
             {
@@ -197,44 +204,44 @@ namespace CuddlyWombatAPI.Test
                     ID = Guid.Parse("22b40860-c394-4a69-8333-00b91712bbc0"),
                     ItemID = items.Single(s => s.Name == "Cappucino").ID,
                     MenuID = menus.Single(s => s.Name == "Morning Set").ID,
-                    Quantity = 2
+                    Qty = 2
                 },
                 new ItemJMenu {
                     ID = Guid.Parse("e8fd78e2-b911-43ed-aa24-12bacd6f9d44"),
                     ItemID = items.Single(s => s.Name == "Muffin").ID,
                     MenuID = menus.Single(s => s.Name == "Morning Set").ID,
-                    Quantity = 1
+                    Qty = 1
                 },
                 new ItemJMenu {
                     ID = Guid.Parse("d5df649b-ac30-4438-af18-73021abefed5"),
                     ItemID = items.Single(s => s.Name == "Latte").ID,
                     MenuID = menus.Single(s => s.Name == "Lunch Set").ID,
-                    Quantity = 1
+                    Qty = 1
                 },
                 new ItemJMenu {
                     ID = Guid.Parse("d0b1b3f5-e141-4334-8f19-96e026b66251"),
                     ItemID = items.Single(s => s.Name == "Small Chips").ID,
                     MenuID = menus.Single(s => s.Name == "Lunch Set").ID,
-                    Quantity = 2
+                    Qty = 2
                 },
                 new ItemJMenu {
                     ID = Guid.Parse("3a5c1c98-05e1-4c03-8509-a01ac1ec2ed6"),
                     ItemID = items.Single(s => s.Name == "Grilled Chicken").ID,
                     MenuID = menus.Single(s => s.Name == "Lunch Set").ID,
-                    Quantity = 3
+                    Qty = 3
                 },
                 new ItemJMenu {
                     ID = Guid.Parse("c3648e19-2be6-48fc-902f-a8ca61fbe0e0"),
                     ItemID = items.Single(s => s.Name == "Small Chips").ID,
                     MenuID = menus.Single(s => s.Name == "Dinner Set").ID,
-                    Quantity = 2
-                    
+                    Qty = 2
+
                 },
                 new ItemJMenu {
                     ID = Guid.Parse("01e01e35-afb7-4098-9fce-6e439858717b"),
                     ItemID = items.Single(s => s.Name == "Grilled Chicken").ID,
                     MenuID = menus.Single(s => s.Name == "Dinner Set").ID,
-                    Quantity = 1
+                    Qty = 1
                 }
 
             };
@@ -243,6 +250,85 @@ namespace CuddlyWombatAPI.Test
             {
                 context.ItemMenus.Add(ItemMenu);
             }
+
+
+            // Order List
+            var orders = new OrderEntity[]
+                {
+                    new OrderEntity
+                    {
+                        ID =  Guid.Parse("f080b89f-31d5-44c6-92df-192d884cc500"),
+                        Name = "Ted Mosby",
+                        Description = "Two sugar on the side",
+                        CustomerName = "Ted Mosby",
+                        DateCreated = DateTime.UtcNow,
+                        IsPaid = false,
+                        Employee = "Aaron Smith",
+                        Status = "Pending"
+
+                    },
+                     new OrderEntity
+                    {
+                        ID =  Guid.Parse("c35590fc-4694-4b2c-95fa-b3665cde8de4"),
+                        Name = "Will Truman",
+                        Description = "Two sugar on the side",
+                        CustomerName = "Will Truman",
+                        DateCreated = DateTime.UtcNow,
+                        IsPaid = false,
+                        Employee = "Aaron Smith",
+                        Status = "Pending"
+
+                    }
+                };
+
+            foreach (OrderEntity order in orders)
+            {
+                context.Orders.Add(order);
+            }
+
+
+            // Order and Item Connection
+            var orderItems = new OrderJItem[]
+            {
+                new OrderJItem
+                {
+                    ID = Guid.Parse("cfa63c3f-da98-489d-a097-15ed787f4599"),
+                    OrderID = orders.Where( i => i.ID == Guid.Parse("f080b89f-31d5-44c6-92df-192d884cc500")).SingleOrDefault().ID,
+                    ItemID = items.Where(i => i.Name == "Muffin").SingleOrDefault().ID,
+                    Qty = 1
+                },
+                new OrderJItem
+                {
+                    ID = Guid.Parse("5605b33c-5f23-4c58-9177-be939e33dba8"),
+                    OrderID = orders.Where( i => i.ID == Guid.Parse("f080b89f-31d5-44c6-92df-192d884cc500")).SingleOrDefault().ID,
+                    ItemID = items.Where(i => i.Name == "Latte").SingleOrDefault().ID,
+                    Qty = 1
+                }
+            };
+
+            foreach (OrderJItem orderItem in orderItems)
+            {
+                context.OrderItems.Add(orderItem);
+            }
+
+
+            // Order and Menu Connection
+            var orderMenus = new OrderJMenu[]
+            {
+                new OrderJMenu
+                {
+                    ID = Guid.Parse("cc4ba768-8edc-4a77-a686-89e6671e3cb8"),
+                    OrderID = orders.Where( i => i.ID == Guid.Parse("f080b89f-31d5-44c6-92df-192d884cc500")).SingleOrDefault().ID,
+                    MenuID = menus.Where(i => i.Name == "Dinner Set").SingleOrDefault().ID,
+                    Qty = 1
+                },
+
+            };
+            foreach (OrderJMenu orderMenu in orderMenus)
+            {
+                context.OrderMenus.Add(orderMenu);
+            }
+
 
             await context.SaveChangesAsync();
         }

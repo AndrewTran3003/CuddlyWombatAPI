@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CuddlyWombat.Models
 {
-    public class Order:Entity
+    public class OrderEntity:Entity
     {
         public string OrderType { get; set; }
         public double AmountDue { get; set; }

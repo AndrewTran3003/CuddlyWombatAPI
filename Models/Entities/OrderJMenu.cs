@@ -10,7 +10,7 @@ namespace CuddlyWombat.Models
         public Guid MenuID { get; set; }
         public Guid OrderID { get; set; }
         public MenuEntity Menu { get; set; }
-        public Order Order { get; set; }
-        public int MenusSold { get; set; }
+        public OrderEntity Order { get; set; }
+        public int Qty { get; set; }
     }
 }

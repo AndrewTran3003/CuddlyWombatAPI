@@ -6,6 +6,7 @@ using CuddlyWombat.Models;
 using CuddlyWombatAPI.Data;
 using CuddlyWombatAPI.Models;
 using CuddlyWombatAPI.Models.Resources;
+using CuddlyWombatAPI.Models.Resources.Order;
 using CuddlyWombatAPI.Models.ResponseModels;
 using CuddlyWombatAPI.Services;
 using Microsoft.AspNetCore.Http;
@@ -58,67 +59,14 @@ namespace CuddlyWombatAPI.Controllers
             return item;
         }
 
-        // GET: ItemsController/Create
-        public ActionResult Create()
-        {
-            return null;
-        }
 
         // POST: ItemsController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [Route("Create")]
+        public async void Create(Item item)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return null;
-            }
+            
         }
 
-        // GET: ItemsController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return null;
-        }
-
-        // POST: ItemsController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        // GET: ItemsController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return null;
-        }
-
-        // POST: ItemsController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return null;
-            }
-        }
     }
 }

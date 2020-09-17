@@ -14,6 +14,7 @@ using CuddlyWombatAPI.Services;
 using AutoMapper;
 using CuddlyWombatAPI.Infrastructure;
 using Newtonsoft;
+using CuddlyWombatAPI.Services.DefaultServices;
 
 namespace CuddlyWombatAPI
 {
@@ -35,7 +36,8 @@ namespace CuddlyWombatAPI
                 );
             services
                 .AddScoped<IItemService, DefaultItemService>()
-                .AddScoped<IMenuService,DefaultMenuService>();
+                .AddScoped<IMenuService,DefaultMenuService>()
+                .AddScoped<IOrderService,DefaultOrderService>();
             services.AddAutoMapper(
                 options => options.AddProfile<MappingProfile>());
             services.AddDbContext<CuddlyWombatDbContext>(
