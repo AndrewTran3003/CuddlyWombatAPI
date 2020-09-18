@@ -21,7 +21,7 @@ namespace CuddlyWombatAPI.Filters
         }
         public void OnException(ExceptionContext context)
         {
-            var error = new ApiError();
+            var error = new ApiResponse();
             if (_webHostEnvironment.IsDevelopment())
             {
                 error.Message = context.Exception.Message;

@@ -1,4 +1,6 @@
-﻿using CuddlyWombatAPI.Models.Resources;
+﻿using CuddlyWombat.Models;
+using CuddlyWombatAPI.Models;
+using CuddlyWombatAPI.Models.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +13,7 @@ namespace CuddlyWombatAPI.Services
         Task<Item> GetItemAsync(Guid id);
 
         Task<List<Item>> GetAllItemsAsync();
+
+        ApiResponse CreateAnItem(Item item);
     }
 }

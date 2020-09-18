@@ -63,9 +63,20 @@ namespace CuddlyWombatAPI.Controllers
         // POST: ItemsController/Create
         [HttpPost]
         [Route("Create")]
-        public async void Create(Item item)
+        public  ApiResponse Create([FromBody]Item item)
         {
+            ApiResponse response = new ApiResponse();
+            if (item == null || item.GetType() != typeof(Item)) {
+                response.Message = "An error occurred while adding a new item";
+                response.Detail = "The item is lost during transit";
+                response.Link = Link.To(nameof(ItemsController.GetAllItems));
+            }
+            else
+            {
+                response = _itemService.CreateAnItem(item);
+            }
             
+            return response;
         }
 
     }

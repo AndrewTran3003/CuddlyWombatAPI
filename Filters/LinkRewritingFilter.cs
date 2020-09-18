@@ -137,13 +137,16 @@ namespace CuddlyWombatAPI.Filters
                 shouldSkip = true;
             }
 
-            Resource test = asObjectResult.Value as Resource;
+            if (asObjectResult.Value as ApiResponse != null)
+            {
+                shouldSkip = false;
+            }
+
 
             if (shouldSkip)
             {
                 return next();
             }
-
             var rewriter = new LinkRewriter(_urlHelperFactory.GetUrlHelper(context));
             RewriteAllLinks(asObjectResult.Value, rewriter);
             return next();
