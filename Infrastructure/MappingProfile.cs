@@ -22,7 +22,10 @@ namespace CuddlyWombatAPI.Infrastructure
                 .ForMember(dest => dest.Self, opt => opt.MapFrom(src => 
                 Link.To(nameof(ItemsController.GetItem),new { itemId = src.ID } )));
 
-            CreateMap<Item, ItemEntity>();
+            CreateMap<Item, ItemEntity>()
+                .ForMember(dest => dest.ID, opt => opt.UseDestinationValue())
+                .ForMember(dest => dest.DateCreated, opt => opt.UseDestinationValue());
+
             CreateMap<MenuEntity, Menu>()
                .ForMember(dest => dest.Self, opt => opt.MapFrom(src =>
                Link.To(nameof(MenusController.GetMenu), new { menuId = src.ID })));

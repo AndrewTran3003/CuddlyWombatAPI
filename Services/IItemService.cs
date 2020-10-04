@@ -14,6 +14,7 @@ namespace CuddlyWombatAPI.Services
 
         Task<List<Item>> GetAllItemsAsync();
 
-        ApiResponse CreateAnItem(Item item);
+        Task<ApiResponse> CreateAnItem(Item item);
+        Task<ApiResponse> EditAnItem(Guid id, Item item);
     }
 }
